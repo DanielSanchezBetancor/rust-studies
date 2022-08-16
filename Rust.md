@@ -135,13 +135,95 @@ let x = x + 1; //6 = 5 + 1
 println!("{x}"); //6
 ```
 
+**Tipos de variables**
+
+*Escalares*
+
+- Integer
+
+Números sin fracción. 
+
+| Tamaño | Con signo *(+/-)* | Sin signo |
+|-|-|-|
+| 8-bit |	i8 |	u8 |
+| 16-bit |	i16 |	u16 |
+| 32-bit |	i32 *(Por defecto)* |	u32 |
+| 64-bit |	i64 |	u64 |
+| 128-bit |	i128 |	u128 |
+| arch |	isize |	usize |
+
+Adicionalmente, se pueden usar varios tipos de representación de números.
+
+| Literal | Ejemplo 
+|-|-|
+| Decimal |	98_222
+| Hex |	0xff
+| Octal |	0o77
+| Binario |	0b1111_0000
+| Byte | (u8)	b'A'
+
+- Float
+
+Existen únicamente dos: *f32* y *f64*; Siendo *f64* el tipo por defecto, dado que en CPU modernas es la misma velocidad pero con mejor precisión.
+
+- Boolean
+
+Con 1 byte de tamaño, solo acepta dos valores: *true* y *false*.
+
+- Char
+
+Unidad primitiva de caracteres del teclado. Se envuelven con comillas simples.
+
+*Compuestos*
+
+- Tuplas
+
+Contenedor de números de diferentes tipos. Tamaño determinado en la declaración. 
+
+*Ejemplo*
+
+> Generación de una tupla
+
+```
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+```
+
+> Desestructuración de una tupla a variables
+
+```
+let (x, y, z) = tup;
+```
+
+> Selección de un componente concreto de la tupla
+
+```
+let x = tup.1; //6.4
+```
+- Arrays
+
+Contenedor de variables del mismo tipo. Tamaño determinado en la declaración.
+
+> Declaración de un array. En el tipado, determinamos la cantidad de elementos
+
+```
+let array: [i32; 5] = [0, 1, 2, 3, 4];
+```
+
+> Selección de un componente concreto del array
+
+```
+let x = array[2]; //2
+```
+
 **Funciones**
 
 - Palabra reservada: fn
 
-> fn HelloWorld() {
-> 
-> }
+```
+fn HelloWorld() {
+
+}
+```
 
 - Las macros o funciones nativas de Rust son llamadas con una exclamación.
 
