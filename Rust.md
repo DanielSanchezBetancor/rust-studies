@@ -1,68 +1,78 @@
 # Rust
 
 ## Índice
-
 - [Rust](#rust)
   - [Índice](#índice)
-  - [- Buenas prácticas](#--buenas-prácticas)
   - [Instalación](#instalación)
+    - [Descarga](#descarga)
+    - [Instalación](#instalación-de-rust)
+    - [Coimprobación de gestor de paquetes](#comprobación-de-gestor-de-paquetes)
   - [Rust](#rust-1)
+    - [Ejecución](#ejecución)
+    - [Ficheros](#ficheros)
+    - [Funciones](#funciones)
   - [Cargo](#cargo)
   - [Buenas prácticas](#buenas-prácticas)
----
 
 ## Instalación
 
-**Descarga**
+### Descarga
 
-```
-https://www.rust-lang.org/tools/install
-```
-- Escoger nuestra plataforma (Ej: ``` DOWNLOAD RUSTUP-INIT.EXE (64-BIT)``` )
+Podemos descargar *Rust* en la página web oficial
 
+> https://www.rust-lang.org/tools/install
 
+Escoger nuestra plataforma (Ej: ```DOWNLOAD RUSTUP-INIT.EXE (64-BIT)``` )
 
-**Instalación**
+### Instalación de Rust
 
 1. Ejecutamos 'rustup-ini.exe' *(o el archivo descargado)* y aparecerá una ventana de selección en CMD. 
 2. Seleccionar la primera opcion (1). *Si no se tiene Visual Studio instalado, este proceso lo instalará.*
 
 *Nota*
+
 > Cuando pida descargar Visual Studio, seleccionar: 
 > - “Desktop Development with C++”
 > - SDK Windows 10 u 11
 > - Pack de componentes Inglés + Español
 
 3. Tras la instalación de Visual Studio, veremos información acerca de Cargo y la localización de este gestor de paquetes. Esto modificará el PATH del usuario actual para añadir los scripts de Cargo.
+
 >   C:\Users\Baifo\\.rustup
+
 4. Continuamos la instalación con la configuración recomendada, en la primera opción (1).
 5. Finalmente, tras haberse instalado, nos solicitará apretar Enter para salir. 
 
-**Comprobación de gestor de paquetes**
+### Comprobación de gestor de paquetes
 
-Para comprobar que se ha instalado correctamente el gestor de paquetes Cargo, se debe abrir una nueva instancia de terminal y ejecutar: 
+Para comprobar que se ha instalado correctamente el gestor de paquetes *Cargo*, se debe abrir una nueva instancia de terminal y ejecutar: 
+
 > rustc --version
 
  - Ejemplo
-> C:\Users\Baifo>rustc --version
->
-> rustc 1.63.0 (4b91a6ea7 2022-08-08)
+
+```
+C:\Users\Baifo>rustc --version
+
+rustc 1.63.0 (4b91a6ea7 2022-08-08)
+```
 
 Si ves esta información o alguna de la misma estructura, se ha instalado correctamente.
 
----
-
 ## Rust
 
-**Ejecución**
+### Ejecución
 
 La ejecución de un fichero Rust, buscará como primera función de inicio de la aplicación la siguiente:
 
-> fn main() {}
+```
+ fn main() {}
+```
 
 *Ejemplo de ejecución de un fichero Rust, desde la terminal.*
 
  1. Generamos los archivos ejecutables con *Cargo*, apuntando al fichero *Rust* que queremos ejecutar.
+
 > ~/proyectos/Estudios/Rust/projects/hello_world $ **rustc hello_world.rs**
 
 2. Comprobamos que los archivos se han generado
@@ -77,12 +87,11 @@ La ejecución de un fichero Rust, buscará como primera función de inicio de la
 > 
 > **Hello, world!**
 
-
-**Ficheros**
+### Ficheros
 
 Características
-- Los ficheros Rust tienen la extension 'rs'
-- Combinaciónes de palabras se forman con barras bajas, como por ejemplo: hello_world.rs
+- Los ficheros Rust tienen la extension ***rs***
+- Combinaciónes de palabras se forman con barras bajas, como por ejemplo: *hello_world.rs*
 
 **Comentarios**
 
@@ -215,9 +224,11 @@ let array: [i32; 5] = [0, 1, 2, 3, 4];
 let x = array[2]; //2
 ```
 
-**Funciones**
+### Funciones
 
 - Palabra reservada: fn
+
+*Ejemplo*
 
 ```
 fn HelloWorld() {
@@ -233,6 +244,43 @@ fn HelloWorld() {
 *Función del usuario*
 
 > println("Hola mundo")
+
+- Las funciones con argumentos deben declarar el tipo.
+- Multiples argumentos se separan con coma *(,)*
+
+*Incorrecto*
+
+```
+fn sum(a, b) {
+fn sum(a: u32, b) {
+fn sum(a, b:i32) {
+```
+
+*Correcto*
+```
+fn sum(a: i32, b: i32) {
+```
+
+- Declaraciones que acaban en expresion sin punto y coma, se utilizan como valor de retorno
+- Los valores de retorno deben especificar su tipo en la funcion a traves de una flecha *(->)*
+
+*Ejemplos*
+
+```
+let function_return = function_with_return(5, 10); //15
+
+fn function_with_return(x: u32, y: u32) -> u32 {
+    let sum = x + y;
+    sum 
+}
+```
+
+```
+let expression_in_statement = {
+    let x = 4;
+    x + 1
+}; //5
+```
 
 **Librerías**
 
@@ -304,8 +352,6 @@ Finished dev [unoptimized + debuginfo] target(s) in 0.12s
 
 Archivo de configuración de Cargo. Controla paquetes y dependencias. 
 
----
-
 ## Buenas prácticas
 
 - Las constantes deben ir en mayúsculas, con formato *camel_case*.
@@ -338,4 +384,4 @@ Incorrecto; Debe separadarse con un espacio.
 
 - Rust se indenta con 4 espacios, no con tabulaciones.
 - El código generado debe residir en *src*
-- Los nombres de variables deben ser *camel_case*
+- Los nombres de variables y de funciones deben ser *camel_case*
