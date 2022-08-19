@@ -12,3 +12,9 @@ This repository holds all the exercises and documentation I have been gathering 
   	2. Move to *Workbook*
   	3. Move the desire exercise to execute
 3. Execute with *cargo run*
+
+## Proposed exercises
+
+- [Guessing Game](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/3._guessing_game)
+- [Temperature converter (ºF <=> ºC)](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/8._temp_converter)
+- [Fibonnaci](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/9._fibonnaci)
