@@ -10,6 +10,7 @@
   - [Rust](#rust-1)
     - [Ejecución](#ejecución)
     - [Ficheros](#ficheros)
+    - [Comentarios](#comentarios)
     - [Funciones](#funciones)
   - [Cargo](#cargo)
   - [Buenas prácticas](#buenas-prácticas)
@@ -36,9 +37,9 @@ Escoger nuestra plataforma (Ej: ```DOWNLOAD RUSTUP-INIT.EXE (64-BIT)``` )
 > - SDK Windows 10 u 11
 > - Pack de componentes Inglés + Español
 
-3. Tras la instalación de Visual Studio, veremos información acerca de Cargo y la localización de este gestor de paquetes. Esto modificará el PATH del usuario actual para añadir los scripts de Cargo.
+3. Tras la instalación de Visual Studio, veremos información acerca de *Cargo* y la localización de este gestor de paquetes. Esto modificará el *PATH* del usuario actual para añadir los scripts de *Cargo*.
 
->   C:\Users\Baifo\\.rustup
+> C:\Users\Baifo\\.rustup
 
 4. Continuamos la instalación con la configuración recomendada, en la primera opción (1).
 5. Finalmente, tras haberse instalado, nos solicitará apretar Enter para salir. 
@@ -49,7 +50,7 @@ Para comprobar que se ha instalado correctamente el gestor de paquetes *Cargo*, 
 
 > rustc --version
 
- - Ejemplo
+*Ejemplo*
 
 ```
 C:\Users\Baifo>rustc --version
@@ -93,7 +94,7 @@ Características
 - Los ficheros Rust tienen la extension ***rs***
 - Combinaciónes de palabras se forman con barras bajas, como por ejemplo: *hello_world.rs*
 
-**Comentarios**
+### Comentarios
 
 - Comentario simple
 
@@ -282,7 +283,7 @@ let expression_in_statement = {
 }; //5
 ```
 
-**Librerías**
+### Librerías
 
 - STD
   - IO
@@ -295,6 +296,110 @@ let expression_in_statement = {
 io::stdin.read_line()
 ```
 
+### Sentencias de control
+
+**if**
+
+- Las condiciones *if* evaluan una expresión y ejecutan un código *(arm)* asociada.
+- Los *if* pueden no tener paréntesis.
+- El resultado de la expresión debe ser *boolean* en todos los casos.
+- Cada *arm* debe cumplimentar la expresión explicitamente, teniendo la posibilidad de controlar con la palabra resevada *else*
+- Existe la posibilidad de anidar varias expresiones con uso de *if else condición*
+- Como expresiones, se pueden colocar en la declaración de una variable
+- En declaraciones con expresiones, la devolución de la expresion debe ser siempre del mismo tipo
+
+*Ejemplos*
+
+``` 
+//Condiciones *if*
+if edad == 0 {
+    println!("¡Ese número no vale!");
+} else if edad % 2 == 0 {
+    println!("Tu edad es divisible entre 2");
+} else {
+    println!("Tu edad no es divisible entre 2");
+}
+
+//Declaraciones con expresiones
+let es_par = if edad % 2 == 0 { "Si" } else { "No" };
+//Esto genera un error por diferencia de tipados en la devolución de la expresión
+let es_par = if edad % 2 == 0 { "Si" } else { 0 };
+```
+**loop**
+
+- Bucles infinitos, con salida a traves de la palabra reservada *break*
+- Como los *if*, se puede usar en una declaración, devolviendo el resultado como *break resultado*
+- Los *loops* pueden tener identificadores para apuntar en una anidación
+
+```
+let how_many_times = loop {
+    if times == 10 {
+        break times;
+    }
+    times += 1;
+};
+
+//Loops anidados con identificadores
+let mut enemigos = 5;
+let conseguido: bool = 'primer_nivel: loop {
+    let mut pistoletazos = 0;
+    'ataque: loop {
+        if enemigos == 0 {
+            break 'primer_nivel true;
+        }
+        pistoletazos += 1;
+        if pistoletazos == 5 {
+            println!("¡¡Conseguido!! Has matado a 1 enemigo");
+            enemigos -= 1;
+            break 'ataque;
+        } else {
+            println!("Has fallado el {pistoletazos}º disparo, apunta mejor!!");
+        } 
+    }
+        println!("Quedan {enemigos} enemigos");
+};
+println!("¿Primer nivel superado? {conseguido}");
+```
+
+**while**
+
+- Para eliminar la necesidad de condiciones anidadas junto con elementos *break*, se usa este componente
+- Itera hasta que la expresion declarada se cumpla
+
+*Ejemplos*
+
+```
+//Misma version que el loop anidado y con identificadores, pero usando 'while'
+println!("Empieza el segundo nivel.");
+enemigos = 10;
+while enemigos != 0 {
+    let mut pistoletazos = 0;
+    while pistoletazos != 8 {
+        pistoletazos += 1;
+        if pistoletazos == 8 {
+            println!("¡¡Conseguido!! Has matado a 1 enemigo");
+            enemigos -= 1;
+        } else {
+            println!("Has fallado el {pistoletazos}º disparo, apunta mejor!!");
+        }
+    }
+    println!("Quedan {enemigos} enemigos");
+}
+let nivel_conseguido = if enemigos == 0 { "Si!" } else { "Que va" }; 
+println!("Segundo nivel superado? {nivel_conseguido}");
+```
+
+**for**
+
+- Bucle para posiciones fijas
+
+```
+let armas_desbloqueadas = ["katana", "Machete", "Cuchillo de pescador", "Bazooka"];
+println!("Este es tu listado de armas disponibles:");
+for arma in armas_desbloqueadas {
+    println!(" - {arma}");
+}
+```
 ---
 
 ## Cargo
