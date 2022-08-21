@@ -19,5 +19,3 @@ This repository holds all the exercises and documentation I have been gathering 
 - [Temperature converter (ºF <=> ºC)](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/8._temp_converter)
 - [Fibonnaci](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/9._fibonnaci)
 - [Christmas carol “The Twelve Days of Christmas” lyrics](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/10._song)
-
-Have a nice day! :)
