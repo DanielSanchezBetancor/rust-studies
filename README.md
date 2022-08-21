@@ -21,3 +21,4 @@ This repository holds all the exercises and documentation I have been gathering 
 - [Christmas carol “The Twelve Days of Christmas” lyrics](https://github.com/DanielSanchezBetancor/rust-studies/tree/master/Workbook/10._song)
 
 Have a nice day! :)
+Thanks for reading!
